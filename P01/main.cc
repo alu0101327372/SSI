@@ -28,10 +28,11 @@ int main() {
   }
 
   // Cifrado
-  Vernam cifrado(mensaje, clave);
+  Vernam cifrado(clave);
 
   int operacion = 0;
   bool salir = false;
+
   // Menu
   while (!salir) {
     std::cout << "\n¿Qué desea hacer?\n";
@@ -39,39 +40,25 @@ int main() {
     std::cout << "[1] Cifrar mesaje.\n";
     std::cout << "[2] Descifrar mensaje.\n";
     std::cin >> operacion;
-  }
-  switch(operacion) {
-    case 0: 
-      salir = true;
-      break;
+  
+    switch(operacion) {
+      case 0: 
+        salir = true;
+        exit(1);
+        break;
 
-    case 1:
-      cifrado.cifrar(mensaje);
-      std::cout << "Entrada\n";
-      std::cout << "\tMensaje Original: " << mensaje << "\n";
-      std::cout << "Salida\n";
-      std::cout << "\tMensaje original en binario: " << "\n";
-      std::cout << "\tLongitud del mensaje en binario: " << "\n";
-      std::cout << "Entrada\n";
-      std::cout << "\tClave Aleatoria: " << clave << "\n";
-      std::cout << "\tMensaje cifrado en binario: " << "\n";
-      std::cout << "\tMensaje cifrado: " << cifrado.get_mensaje_cifrado() << "\n";
-      break;
+      case 1:
+        cifrado.cifrar(mensaje);
+        cifrado.print_cifrado();
+        break;
 
-    case 2: 
-      std::cout << "Introduzca la entrada cifrada:\n";
-      std::cin >> mensaje;
+      case 2: 
+        std::cout << "Introduzca la entrada cifrada:\n";
+        std::cin >> mensaje;
 
-      cifrado.descifrar(mensaje);
-
-      std::cout << "Entrada\n";
-      std::cout << "\tMensaje Cifrado: " << mensaje << "\n";
-      std::cout << "Salida\n";
-      std::cout << "\tMensaje cifrado en binario: " << "\n";
-      std::cout << "\tLongitud del mensaje en binario: " << "\n";
-      std::cout << "Entrada\n";
-      std::cout << "\tClave Aleatoria: " << "\n";
-      std::cout << "\tMensaje cifrado en binario: " << "\n";
-      std::cout << "\tMensaje cifrado: " << cifrado.get_mensaje_descifrado() << "\n";
+        cifrado.descifrar(mensaje);
+        cifrado.print_descifrado();
+        break;
+    }
   }
 }

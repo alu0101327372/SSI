@@ -1,30 +1,40 @@
+#pragma once
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <bitset>
 
+class Vernam
+{
+private:
+    std::string entrada;
+    std::string clave;
+    std::string mensaje_cifrado_binario;
+    std::string mensaje_cifrado;
+    std::string mensaje_descifrado_binario;
+    std::string mensaje_descifrado;
 
-class Vernam {
-  public:
-    Vernam(std::string mensaje, std::string clave);
-    Vernam(std::string clave);
+    std::vector<std::string> binario;
 
-    void cifrar(std::string mensaje);
-    void descifrar(std::string cifrado);
+public:
+    Vernam(std::string entrada_, std::string clave_) : entrada(entrada_), clave(clave_){};
+    Vernam(std::string clave_) : clave(clave_){};
+
+    ~Vernam(){};
+
+    void cifrar(std::string entrada_);
+    void descifrar(std::string cifrado_);
+    void write();
 
     std::string get_mensaje_cifrado();
     std::string get_mensaje_descifrado();
-  private:
-    std::string mensaje_;
-    std::string clave_;
-    std::string mensaje_cifrado_binario_;
-    std::string mensaje_cifrado_;
-    std::string mensaje_descifrado_binario_;
-    std::string mensaje_descifrado_;
-    std::vector<std::string> binario;
-    
-    void convertir_binario(std::string mensaje);
-    std::string convertir_binario_string(std::string mensaje);
-    void destroy();
+
+    void print_descifrado();
+    void print_cifrado();
+
+private:
+    void borrar();
+    void convertir_binario(std::string entrada_);
+    std::string convertir_binario_string(std::string mensaje_binario);
 };
