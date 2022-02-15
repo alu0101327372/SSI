@@ -2,33 +2,21 @@
 
 
 int main() {
-  int opcion;
   int aleatorio;
   std::string mensaje, clave;
-  std::cout << "¿Desea introducir la clave manual o de forma aleatoria?\n";
-  std::cout << "[0] Manual\n";
-  std::cout << "[1] Aleatoria\n";
-  std::cin >> opcion;
-  if (opcion == 0) {
-    std::cout << "Introduzca la entrada:\n";
-    std::cin >> mensaje;
-    std::cout << "Introduzca la clave:\n";
-    std::cin >> clave;
-  }
-  else {
-    std::cout << "Introduzca la entrada:\n";
-    std::cin >> mensaje;
 
-    srand(time(NULL));
-    for (int i = 0; i < mensaje.size(); i++) {
-      aleatorio = rand() % 64;
-      std::bitset<8> clave_bitset(aleatorio);
-      clave += clave_bitset.to_string();
-    }
+  std::cout << "Introduzca la entrada:\n";
+  std::cin >> mensaje;
+  // Clave aleatoria
+  srand(time(NULL));
+  for (int i = 0; i < mensaje.size(); i++) {
+    aleatorio = rand() % 64;
+    std::bitset<8> clave_bitset(aleatorio);
+    clave += clave_bitset.to_string();
   }
 
-  // Cifrado
-  Vernam cifrado(clave);
+  // Cifrado Vernam
+  Vernam vernam(clave);
 
   int operacion = 0;
   bool salir = false;
@@ -48,16 +36,16 @@ int main() {
         break;
 
       case 1:
-        cifrado.cifrar(mensaje);
-        cifrado.print_cifrado();
+        vernam.cifrar(mensaje);
+        vernam.print_cifrado();
         break;
 
       case 2: 
         std::cout << "Introduzca la entrada cifrada:\n";
         std::cin >> mensaje;
 
-        cifrado.descifrar(mensaje);
-        cifrado.print_descifrado();
+        vernam.descifrar(mensaje);
+        vernam.print_descifrado();
         break;
     }
   }

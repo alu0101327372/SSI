@@ -7,27 +7,25 @@
 
 class Vernam {
   public:
-    Vernam(std::string clave_) : clave(clave_){};
+    Vernam(std::string clave);
+    ~Vernam(void);
 
-    void cifrar(std::string entrada_);
-    void descifrar(std::string cifrado_);
-
-    std::string get_mensaje_cifrado();
-    std::string get_mensaje_descifrado();
+    void cifrar(std::string msg);
+    void descifrar(std::string msg);
 
     void print_descifrado();
     void print_cifrado();
-
-private:
-    std::string entrada;
-    std::string clave;
-    std::string mensaje_cifrado_binario;
-    std::string mensaje_cifrado;
-    std::string mensaje_descifrado_binario;
-    std::string mensaje_descifrado;
+  private:
+    std::string mensaje_;
+    std::string mensaje_binario_;
+    std::string clave_;
+    std::string mensaje_cifrado_binario_;
+    std::string mensaje_cifrado_;
+    std::string mensaje_descifrado_binario_;
+    std::string mensaje_descifrado_;
     std::vector<std::string> binario;
 
-    void borrar();
-    void convertir_binario(std::string entrada_);
+    void destroy();
+    void convertir_binario(std::string mensaje);
     std::string convertir_binario_string(std::string mensaje_binario);
 };
