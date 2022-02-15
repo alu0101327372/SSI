@@ -124,47 +124,43 @@ void Vernam::convertir_binario(std::string entrada_)
     }
 }
 
-std::string Vernam::convertir_binario_string(std::string mensaje_binario)
-{
-    int tamano = mensaje_binario.size() / entrada.size();
+std::string Vernam::convertir_binario_string(std::string mensaje_binario) {
+  int tamano = mensaje_binario.size() / entrada.size();
 
-    std::vector<std::string> mensaje;
+  std::vector<std::string> mensaje;
 
-    std::string caracter;
-    for (int i = 0; i < mensaje_binario.size() / tamano; i++)
-    {
-        for (int j = i * tamano; j < (i + 1) * tamano; j++)
-        {
-            caracter += mensaje_binario[j];
-        }
-        mensaje.push_back(caracter);
-        caracter.clear();
+  std::string caracter;
+  for (int i = 0; i < mensaje_binario.size() / tamano; i++)
+  {
+      for (int j = i * tamano; j < (i + 1) * tamano; j++)
+      {
+          caracter += mensaje_binario[j];
+      }
+      mensaje.push_back(caracter);
+      caracter.clear();
     }
 
-    std::string mensaje_string;
-    for (int i = 0; i < mensaje.size(); i++) {
-        unsigned long decimal = std::bitset<8>(mensaje[i]).to_ulong();
-        if (decimal > 125)
-        {
-            decimal = decimal % 125;
-        }
-        if (decimal < 32)
-        {
-            decimal += decimal % 32;
-        }
-        mensaje_string.push_back(char(decimal));
+  std::string mensaje_string;
+  for (int i = 0; i < mensaje.size(); i++) {
+    unsigned long decimal = std::bitset<8>(mensaje[i]).to_ulong();
+    if (decimal > 125) {
+        decimal = decimal % 125;
     }
+    if (decimal < 32) {
+        decimal += decimal % 32;
+    }
+    mensaje_string.push_back(char(decimal));
+  }
 
     return mensaje_string;
 }
 
-void Vernam::borrar()
-{
-    entrada.clear();
-    mensaje_cifrado_binario.clear();
-    mensaje_cifrado.clear();
-    mensaje_descifrado.clear();
-    mensaje_descifrado_binario.clear();
+void Vernam::borrar() {
+  entrada.clear();
+  mensaje_cifrado_binario.clear();
+  mensaje_cifrado.clear();
+  mensaje_descifrado.clear();
+  mensaje_descifrado_binario.clear();
 }
 
 
