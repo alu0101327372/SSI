@@ -36,11 +36,11 @@ void Vernam::convertir_binario(std::string mensaje) {
 
 std::string Vernam::convertir_binario_string(std::string mensaje_binario) {
   std::vector<std::string> mensaje;
-  int tamaño = mensaje_binario.size() / mensaje_.size();
+  int size = mensaje_binario.size() / mensaje_.size();
 
   std::string caracter = "";
-  for (int i = 0; i < mensaje_binario.size() / tamaño; i++) {
-    for (int j = i * tamaño; j < (i + 1) * tamaño; j++) {
+  for (int i = 0; i < mensaje_binario.size() / size; i++) {
+    for (int j = i * size; j < (i + 1) * size; j++) {
       caracter += mensaje_binario[j];
     }
     mensaje.push_back(caracter);
