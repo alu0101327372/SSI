@@ -17,7 +17,7 @@ Vernam::~Vernam(void) {
 
 
 
-void Vernam::destroy() {
+void Vernam::destroy(void) {
   mensaje_.clear();
   mensaje_binario_.clear();
   mensaje_cifrado_binario_.clear();
@@ -149,7 +149,7 @@ void Vernam::descifrar(std::string msg) {
 
 
 
-void Vernam::print_cifrado() {
+void Vernam::print_cifrado(void) {
   std::cout << "Entrada\n";
   std::cout << "\tMensaje Original: " << mensaje_ << "\n";
   std::cout << "Salida\n";
@@ -163,7 +163,7 @@ void Vernam::print_cifrado() {
 
 
 
-void Vernam::print_descifrado() {
+void Vernam::print_descifrado(void) {
   std::cout << "Entrada\n";
   std::cout << "\tMensaje Cifrado: " << mensaje_cifrado_ << "\n";
   std::cout << "Salida\n";
