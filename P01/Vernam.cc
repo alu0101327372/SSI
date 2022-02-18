@@ -1,3 +1,10 @@
+// Universidad de La Laguna
+// Escuela Superior de Ingeniería y Tecnología
+// Grado en Ingeniería Informática
+// Asignatura: Sistemas de Seguiridad Informática // Curso: 3º
+// Práctica 1: Cifrado de Vernam
+// Autor: Marco Antonio Cabrera Hernández
+// Correo: alu0101327372@ull.es
 #include "Vernam.h"
 
 Vernam::Vernam(std::string clave) : clave_(clave) {}
