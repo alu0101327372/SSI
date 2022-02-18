@@ -22,8 +22,8 @@ class Vernam {
     void cifrar(std::string msg);
     void descifrar(std::string msg);
 
-    void print_descifrado(void);
-    void print_cifrado(void);
+    void print_descifrado();
+    void print_cifrado();
   private:
     std::string mensaje_;
     std::string mensaje_binario_;
@@ -34,7 +34,7 @@ class Vernam {
     std::string mensaje_descifrado_;
     std::vector<std::string> binario;
 
-    void destroy(void);
+    void destroy();
     void convertir_binario(std::string mensaje);
     std::string convertir_binario_string(std::string mensaje_binario);
 };

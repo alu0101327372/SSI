@@ -1,10 +1,3 @@
-// Universidad de La Laguna
-// Escuela Superior de Ingeniería y Tecnología
-// Grado en Ingeniería Informática
-// Asignatura: Sistemas de Seguiridad Informática // Curso: 3º
-// Práctica 1: Cifrado de Vernam
-// Autor: Marco Antonio Cabrera Hernández
-// Correo: alu0101327372@ull.es
 #include "Vernam.h"
 
 Vernam::Vernam(std::string clave) : clave_(clave) {}
@@ -17,7 +10,7 @@ Vernam::~Vernam(void) {
 
 
 
-void Vernam::destroy(void) {
+void Vernam::destroy() {
   mensaje_.clear();
   mensaje_binario_.clear();
   mensaje_cifrado_binario_.clear();
@@ -149,7 +142,7 @@ void Vernam::descifrar(std::string msg) {
 
 
 
-void Vernam::print_cifrado(void) {
+void Vernam::print_cifrado() {
   std::cout << "Entrada\n";
   std::cout << "\tMensaje Original: " << mensaje_ << "\n";
   std::cout << "Salida\n";
@@ -163,7 +156,7 @@ void Vernam::print_cifrado(void) {
 
 
 
-void Vernam::print_descifrado(void) {
+void Vernam::print_descifrado() {
   std::cout << "Entrada\n";
   std::cout << "\tMensaje Cifrado: " << mensaje_cifrado_ << "\n";
   std::cout << "Salida\n";
