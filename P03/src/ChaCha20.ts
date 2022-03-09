@@ -8,17 +8,17 @@ const chalk = require('chalk');
  */
 export class ChaCha20 {
   /**
-   * @constant {number} ROUNDS
+   * @constant ROUNDS
    * @readonly
    */
   readonly ROUNDS: number = 20;
-  
+
   /**
    * @param inicial {number[]} Estado inicial 512 bits
-   * @param clave {number[]} clave 256 bits
-   * @param contador {number[]} contador de 32 bits
-   * @param nonce {number[]} nonce de 96 bits
-   * @param constante c{number[]} onstante de 128
+   * @param clave {number[]} Clave 256 bits
+   * @param contador {number[]} Contador de 32 bits
+   * @param nonce {number[]} Nonce de 96 bits
+   * @param constante {number[]} Constante de 128
   */
   constructor(private inicial: number[], private clave: number[], private contador: number[], private nonce: number[], private constante: number[]) {
     for (let i = 0; i < this.constante.length; i++) {
@@ -81,7 +81,7 @@ export class ChaCha20 {
   }
 
   /**
-   * Método
+   * Método que realiza el cifrado ChaCha20
    * @param input {number[]} Estado inicial
    * @returns {Uint32Array} Mensaje cifrado
    */
@@ -126,8 +126,8 @@ export class ChaCha20 {
 
   /**
    * Imprime la salida por pantalla
-   * @param ouput {Uint32Array} a imprimir
-   * @return {string} Cadena con el estado
+   * @param ouput {Uint32Array} Array a imprimir
+   * @returns {string} Cadena con el estado
    */
   print(ouput: Uint32Array): void {
     let str : string = '';
