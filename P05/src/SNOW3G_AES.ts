@@ -149,7 +149,7 @@ var scanf = require('scanf');
   }
 }
 
-// 
+// Menu principal
 console.log('Introduce el byte 1');
 var byte1 = scanf('%d');
 console.log('Introduce el byte 2');
