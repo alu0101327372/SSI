@@ -83,21 +83,24 @@ class CA_GPS:
     for i in range(self.size):
       # Realizamos el desplazamiento G1
       G1 = self.desplazamiento(LFSR1, [3, 10], [10])
-
-    print("Realimentación G1: ", self.feedback_)
-    self.feedback_.clear()
-
-    for i in range(self.size):
-      # Realizamos el desplazamiento G2
       G2 = self.desplazamiento(LFSR2, [2, 3, 6, 8, 9, 10], self.GS[self.id_])
       # Suma en modulo dos
       result.append((G1 + G2) % 2)
 
-    print("Realimentación G2: ", self.feedback_)
-    self.feedback_.clear()
+    feedback_G1 = []
+    feedback_G2 = []
+
+    for i in range(0, len(self.feedback_), 2):
+      feedback_G1.append(self.feedback_[i])
+
+    for i in range(1, len(self.feedback_), 2):
+      feedback_G2.append(self.feedback_[i])
+
+    print("Realimentación G1: ", feedback_G1)
+    print("Realimentación G1: ", feedback_G2)
+    print()
 
     # Mostramos la secuencia generada
-    print()
     print("El resultado es: ", result)
 
 # Función principal
