@@ -12,11 +12,11 @@ class Multiply {
      * @param algorithm Algoritmo a usar
      * @param result Resultado de la multiplicación
      */
-    constructor(byte1, byte2, algorithm = '00011011', result = 0) {
+    constructor(byte1, byte2, result = 0) {
         this.byte1 = byte1;
         this.byte2 = byte2;
-        this.algorithm = algorithm;
         this.result = result;
+        this.algorithm = '00011011';
     }
     getResult() {
         return this.result.toString().padStart(8, '0');

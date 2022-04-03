@@ -169,7 +169,7 @@ class AES {
         for (let i = 0; i < this.M_mixColum.length; i++) {
             for (let j = 0; j < this.M_mixColum.length; j++) {
                 // Hacemos uso de la multiplicación de dos bytes haciendo uso de la práctica implementada en la práctica anterior
-                const output = new Multiply_1.Multiply(this.M_mixColum[i][j], parseInt(column[j], 16), 'AES');
+                const output = new Multiply_1.Multiply(this.M_mixColum[i][j], parseInt(column[j], 16));
                 output.multiplication();
                 multiplication[i] = this.xorBit2Bit(output.getResult(), multiplication[i].padStart(8, '0'));
             }

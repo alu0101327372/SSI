@@ -2,6 +2,7 @@
  * @class Clase encargada de la multiplicación en Snow 3G o AES
  */
  export class Multiply {
+  private algorithm: string = '00011011';
   /**
    * Constructor
    * @param byte1 Multiplicando
@@ -12,7 +13,6 @@
   constructor(
     private byte1: number,
     private byte2: number,
-    private algorithm: string = '00011011',
     private result: number = 0) {}
 
   public getResult() {

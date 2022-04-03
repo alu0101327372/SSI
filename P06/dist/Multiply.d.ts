@@ -4,8 +4,8 @@
 export declare class Multiply {
     private byte1;
     private byte2;
-    private algorithm;
     private result;
+    private algorithm;
     /**
      * Constructor
      * @param byte1 Multiplicando
@@ -13,7 +13,7 @@ export declare class Multiply {
      * @param algorithm Algoritmo a usar
      * @param result Resultado de la multiplicación
      */
-    constructor(byte1: number, byte2: number, algorithm?: string, result?: number);
+    constructor(byte1: number, byte2: number, result?: number);
     getResult(): string;
     multiplication(): void;
     /**
