@@ -58,14 +58,14 @@ class CBC extends AES {
     }
 
     for (let k = 0; k < this.textBlock.length; k++) {
-      if (textsize[k].length >= 16 ) {
-      // XOR entre texto y IV
-      this.text = this.xor(this.textBlock[k], outputAES);
-      outputAES = this.encrypt();
-      this.CipherBlock.push(this.matrixtoArray(outputAES));
+      if (textsize[k].length % this.textBlock[k].length === 0) {
+        // XOR entre texto y IV
+        this.text = this.xor(this.textBlock[k], outputAES);
+        outputAES = this.encrypt();
+        this.CipherBlock.push(this.matrixtoArray(outputAES));
 
-      } else {
-        let lastBlock = this.CipherBlock[k-1];
+      } else { // CIPHER STEALING
+        let lastBlock = this.CipherBlock[k - 1];
         let actualBlock = this.matrixtoArray(this.textBlock[k]);
         let cipher: string[] = [];
 
@@ -87,13 +87,14 @@ class CBC extends AES {
         for (let i = textsize[k].length; i < 16; i++){
           cipher[i] = lastBlock[i];
         }
+
         // Aplicar el AES
         this.text = this.transpose(this.arraytoMatrix(cipher));
         outputAES = this.encrypt();
         this.CipherBlock.push(this.matrixtoArray(outputAES));
 
-        // Recortar el penultimo bloque
-        let lastBlock2 = this.CipherBlock[k-1].splice(0, textsize[k].length)
+        // Omitir el penultimo bloque
+        let lastBlock2 = this.CipherBlock[k - 1].splice(0, textsize[k].length)
         this.CipherBlock.push(lastBlock2);
         this.CipherBlock.shift();
       }
@@ -173,18 +174,25 @@ class CBC extends AES {
   }
 }
 
-// Menu principal
-console.log('Introduce la clave de entrada (16 bytes): ');
-var clave = scanf('%s');
-console.log('Introduce la entrada IV (16 bytes): ');
-var IV = scanf('%s');
-console.log('Introduce la entrada texto original: ');
-var texto = scanf('%s');
+/** Menu principal
+  console.log('Introduce la clave de entrada (16 bytes): ');
+  var clave = scanf('%s');
+  console.log('Introduce la entrada IV (16 bytes): ');
+  var IV = scanf('%s');
+  console.log('Introduce la entrada texto original: ');
+  var texto = scanf('%s');
+*/
 
 let defaultClave = '000102030405060708090A0B0C0D0E0F';
-let defaultText = '00112233445566778899AABBCCDDEEFF';
+let defaultBlockText1 = '00112233445566778899AABBCCDDEEFF';
+let defaultBlockText2 = '000000000000000000000000000000';
 let defaultIV = '00000000000000000000000000000000';
 
-let bloque = [defaultText, '00000000000000000000000000000000'];
+let Clave = '000102030405060708090A0B0C0D0E0F';
+let BlockText1 = '00112233445566778899AABBCCDDEEFF';
+let BlockText2 = '00000000000000000000000000000000';
+let IV = '00000000000000000000000000000000';
+
+let bloque = [defaultBlockText1, defaultBlockText2];
 const cipher = new CBC(defaultClave, bloque, defaultIV);
 cipher.encryptCBC();
