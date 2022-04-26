@@ -4,7 +4,7 @@
   "description": "",
   "main": "AES.js",
   "scripts": {
-    "start": "tsc-watch --onSuccess \"node dist/ElGammalEiptico.js\"",
+    "start": "tsc-watch --onSuccess \"node dist/RSA.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
